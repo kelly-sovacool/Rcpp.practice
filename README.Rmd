@@ -1,0 +1,88 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Rcpp.practice
+
+Practice using the `Rcpp` package
+<!-- badges: start -->
+<!-- badges: end -->
+```{r lib}
+library(Rcpp)
+```
+
+### Advanced R chp. 25 sec. 1
+
+Basic example
+
+```{r}
+cppFunction('int add(int x, int y, int z) {
+    int sum = x + y + z;
+    return sum;
+    }
+')
+add
+add(1, 2, 3)
+```
+
+Loops aren't as expensive in C++ as in R
+
+```{r}
+sumR <- function(x) {
+    total <- 0
+    for (i in seq_along(x)) {
+        total <- total + x[i]
+    }
+    total
+}
+cppFunction('double sumC(NumericVector x) {
+    int n = x.size();
+    double total = 0;
+    for(int i = 0; i < n; ++i) {
+        total += x[i];
+    }
+    return total;
+}')
+set.seed(19960207)
+x <- runif(1e3)
+sum_benchmark <- bench::mark(
+    sum(x),
+    sumC(x),
+    sumR(x)
+)
+sum_benchmark[1:6]
+```
+
+Euclidean distance
+
+```{r}
+pdistR <- function(x, ys) {
+    sqrt((x - ys) ^ 2)
+}
+cppFunction('NumericVector pdistC(double x, NumericVector ys) {
+    int n = ys.size();
+    NumericVector out(n);
+    for(int i = 0; i < n; ++i) {
+        out[i] = sqrt(pow(ys[i] - x, 2.0));
+    }
+    return out;
+}')
+y <- runif(1e6)
+bench::mark(
+    pdistR(0.5, y),
+    pdistC(0.5, y)
+)[1:6]
+```
+
+
