@@ -5,6 +5,136 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
+// timesTwo
+NumericVector timesTwo(NumericVector x);
+RcppExport SEXP _Rcpp_practice_timesTwo(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(timesTwo(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f1
+double f1(NumericVector x);
+RcppExport SEXP _Rcpp_practice_f1(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(f1(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f2
+NumericVector f2(NumericVector x);
+RcppExport SEXP _Rcpp_practice_f2(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(f2(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f3
+bool f3(LogicalVector x);
+RcppExport SEXP _Rcpp_practice_f3(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< LogicalVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(f3(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f4
+int f4(Function pred, List x);
+RcppExport SEXP _Rcpp_practice_f4(SEXP predSEXP, SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Function >::type pred(predSEXP);
+    Rcpp::traits::input_parameter< List >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(f4(pred, x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// f5
+NumericVector f5(NumericVector x, NumericVector y);
+RcppExport SEXP _Rcpp_practice_f5(SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(f5(x, y));
+    return rcpp_result_gen;
+END_RCPP
+}
+// sum3
+double sum3(NumericVector x);
+RcppExport SEXP _Rcpp_practice_sum3(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(sum3(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// sum4
+double sum4(NumericVector xs);
+RcppExport SEXP _Rcpp_practice_sum4(SEXP xsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type xs(xsSEXP);
+    rcpp_result_gen = Rcpp::wrap(sum4(xs));
+    return rcpp_result_gen;
+END_RCPP
+}
+// sum5
+double sum5(NumericVector x);
+RcppExport SEXP _Rcpp_practice_sum5(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(sum5(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// findInterval2
+IntegerVector findInterval2(NumericVector x, NumericVector breaks);
+RcppExport SEXP _Rcpp_practice_findInterval2(SEXP xSEXP, SEXP breaksSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type breaks(breaksSEXP);
+    rcpp_result_gen = Rcpp::wrap(findInterval2(x, breaks));
+    return rcpp_result_gen;
+END_RCPP
+}
+// calc_pvalue_cpp
+double calc_pvalue_cpp(NumericVector perm_perfs, double test_stat);
+RcppExport SEXP _Rcpp_practice_calc_pvalue_cpp(SEXP perm_perfsSEXP, SEXP test_statSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type perm_perfs(perm_perfsSEXP);
+    Rcpp::traits::input_parameter< double >::type test_stat(test_statSEXP);
+    rcpp_result_gen = Rcpp::wrap(calc_pvalue_cpp(perm_perfs, test_stat));
+    return rcpp_result_gen;
+END_RCPP
+}
 // rcpp_hello_world
 List rcpp_hello_world();
 RcppExport SEXP _Rcpp_practice_rcpp_hello_world() {
@@ -17,6 +147,17 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_Rcpp_practice_timesTwo", (DL_FUNC) &_Rcpp_practice_timesTwo, 1},
+    {"_Rcpp_practice_f1", (DL_FUNC) &_Rcpp_practice_f1, 1},
+    {"_Rcpp_practice_f2", (DL_FUNC) &_Rcpp_practice_f2, 1},
+    {"_Rcpp_practice_f3", (DL_FUNC) &_Rcpp_practice_f3, 1},
+    {"_Rcpp_practice_f4", (DL_FUNC) &_Rcpp_practice_f4, 2},
+    {"_Rcpp_practice_f5", (DL_FUNC) &_Rcpp_practice_f5, 2},
+    {"_Rcpp_practice_sum3", (DL_FUNC) &_Rcpp_practice_sum3, 1},
+    {"_Rcpp_practice_sum4", (DL_FUNC) &_Rcpp_practice_sum4, 1},
+    {"_Rcpp_practice_sum5", (DL_FUNC) &_Rcpp_practice_sum5, 1},
+    {"_Rcpp_practice_findInterval2", (DL_FUNC) &_Rcpp_practice_findInterval2, 2},
+    {"_Rcpp_practice_calc_pvalue_cpp", (DL_FUNC) &_Rcpp_practice_calc_pvalue_cpp, 2},
     {"_Rcpp_practice_rcpp_hello_world", (DL_FUNC) &_Rcpp_practice_rcpp_hello_world, 0},
     {NULL, NULL, 0}
 };
