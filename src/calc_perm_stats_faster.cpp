@@ -132,16 +132,9 @@ permute_R <- function(test_data, group_feats) {
 }
 microbenchmark::microbenchmark(permute_R(test_df, group_feats),
                                permute_cpp(test_df, group_feats))
-run_permute_R <- function() {
-    test_df <- data.frame(replicate(1000,sample(0:1,1000,rep=TRUE)))
-    group_feats <- c('X1', 'X2', 'X3', 'X4')
-    permute_R(test_df, group_feats)
-}
-run_permute_cpp <- function() {
-    test_df <- data.frame(replicate(1000,sample(0:1,1000,rep=TRUE)))
-    group_feats <- c('X1', 'X2', 'X3', 'X4')
-    permute_cpp(test_df, group_feats)
-}
-microbenchmark::microbenchmark(run_permute_R(),
-                               run_permute_cpp(), times = 10L)
+
+test_df <- data.frame(replicate(1000,sample(0:1,1000,rep=TRUE)))
+group_feats <- c('X1', 'X2', 'X3', 'X4')
+microbenchmark::microbenchmark(permute_R(test_df, group_feats),
+                               permute_cpp(test_df, group_feats), times = 1000L)
 */
